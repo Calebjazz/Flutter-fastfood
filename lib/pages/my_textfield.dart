@@ -4,6 +4,7 @@ class MyTextField extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   final bool obscureText;
+  final String? Function(String?)? validator;
   final Icon icon;
 
   const MyTextField({
@@ -11,6 +12,7 @@ class MyTextField extends StatelessWidget {
     required this.controller,
     required this.hintText,
     required this.obscureText,
+    required this.validator,
     required this.icon,
   });
 
