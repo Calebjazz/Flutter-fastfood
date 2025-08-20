@@ -32,6 +32,7 @@ class _LoginPageState extends State<LoginPage> {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      extendBodyBehindAppBar: true,
       body: Stack(
         children: [
           // Background cover image
@@ -45,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
           // Dark overlay
           Container(color: Colors.black.withValues(alpha: 0.6)),
-
+      
           Positioned(
             top: screenHeight * 0.2,
             left: 0,
@@ -69,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   const SizedBox(height: 25),
-
+      
                   // Username
                   MyTextField(
                     controller: usernameController,
@@ -90,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   const SizedBox(height: 25),
-
+      
                   // Password
                   MyTextField(
                     controller: passwordController,
@@ -110,13 +111,13 @@ class _LoginPageState extends State<LoginPage> {
                       color: Colors.orangeAccent,
                     ),
                   ),
-
+      
                   const SizedBox(height: 35),
-
+      
                   MyButton(onTap: signUserIn, formKey: formKey),
-
+      
                   const SizedBox(height: 173),
-
+      
                   // Sign Up link
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

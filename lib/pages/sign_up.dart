@@ -13,7 +13,6 @@ class SignUp extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUp> {
   final formKey = GlobalKey<FormState>();
-
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -37,6 +36,7 @@ class _SignUpPageState extends State<SignUp> {
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
+        extendBodyBehindAppBar: true,
       body: SingleChildScrollView(
         child: Stack(
           children: [

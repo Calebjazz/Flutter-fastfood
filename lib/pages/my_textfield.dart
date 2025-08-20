@@ -23,6 +23,7 @@ class MyTextField extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         obscureText: obscureText,
+        validator: validator,
         decoration: InputDecoration(
           hintText: hintText,
           prefix: icon,
