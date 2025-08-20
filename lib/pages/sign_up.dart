@@ -36,7 +36,6 @@ class _SignUpPageState extends State<SignUp> {
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
-        extendBodyBehindAppBar: true,
       body: SingleChildScrollView(
         child: Stack(
           children: [
