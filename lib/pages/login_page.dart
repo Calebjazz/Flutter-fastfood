@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
     if (formKey.currentState != null && formKey.currentState!.validate()) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(const SnackBar(content: Text('Sign In Successful ✅')));
+      ).showSnackBar(const SnackBar(content: Text('Sign In Successful')));
     }
     // Add actual sign-in logic here (API call, DB check, etc.)
   }
@@ -56,17 +56,18 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const Text(
-                    'Delicious',
+                    'Welcome back',
                     style: TextStyle(
-                      color: Colors.orangeAccent,
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold
+                      
                     ),
                   ),
                   const SizedBox(height: 8),
                   const Text(
-                    'Meal for every day',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                    'Login to your Fasfood account and get your favorite meals.',
+                    style: TextStyle(color: Colors.white70, fontSize: 13),
                   ),
                   const SizedBox(height: 25),
       
