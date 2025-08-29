@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const LandingPage(),
         '/login': (context) => const LoginPage(),
         '/sign_up': (context) => const SignUp(),
-        '/user_dashboard': (context) => const UserDashboard(),
+        '/user_dashboard': (context) => UserDashboard(usernameController: TextEditingController(), passwordController: TextEditingController()),
       },
     );
   }

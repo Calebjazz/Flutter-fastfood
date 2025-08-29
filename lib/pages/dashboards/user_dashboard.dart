@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class UserDashboard extends StatefulWidget {
-  const UserDashboard({super.key});
+  final TextEditingController usernameController;
+  final TextEditingController passwordController;
+
+  const UserDashboard({
+    super.key,
+    required this.usernameController,
+    required this.passwordController,
+  });
 
   @override
   State<UserDashboard> createState() => _UserDashboardState();
@@ -11,10 +19,10 @@ class _UserDashboardState extends State<UserDashboard> {
   int _selectedIndex = 0;
 
   final List<Widget> pages = [
-    Center(child: Text("Home", style: TextStyle(fontSize: 20,))),
-    Center(child: Text("Cart", style: TextStyle(fontSize: 20,))),
-    Center(child: Text("Favorites", style: TextStyle(fontSize: 20,))),
-    Center(child: Text("Profile", style: TextStyle(fontSize: 20,))),
+    Center(child: Text("Home", style: TextStyle(fontSize: 20))),
+    Center(child: Text("Cart", style: TextStyle(fontSize: 20))),
+    Center(child: Text("Favorites", style: TextStyle(fontSize: 20))),
+    Center(child: Text("Profile", style: TextStyle(fontSize: 20))),
   ];
 
   void onItemTapped(int index) {
@@ -27,54 +35,58 @@ class _UserDashboardState extends State<UserDashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Fastfood'),
+        title: Text('Fastfood', style: TextStyle(fontFamily: GoogleFonts.robotoMono().fontFamily)),
         backgroundColor: Colors.orangeAccent,
       ),
       drawer: Drawer(
-            child: ListView(
+        child: ListView(
           padding: EdgeInsets.zero,
           children: [
             // Drawer Header
             const UserAccountsDrawerHeader(
               accountName: Text("Caleb Muladi"),
               accountEmail: Text("calebmuladi9@gmail.com"),
-              //someone should be able to upload a real picture
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Colors.white,
                 child: Icon(Icons.person, size: 30, color: Colors.orange),
               ),
               decoration: BoxDecoration(color: Colors.orangeAccent),
             ),
-            //settings
-             ListTile(
+            // Settings
+            ListTile(
               leading: const Icon(Icons.settings),
               title: const Text("Settings"),
               onTap: () {
-                Navigator.pop(context); // navigate to setting page
+                Navigator.pop(context);
               },
             ),
-            //FAQ
+            // FAQ
             ListTile(
               leading: const Icon(Icons.question_answer),
               title: const Text("FAQS"),
               onTap: () {
-                Navigator.pop(context); // navigate to FAQS page
+                Navigator.pop(context);
               },
             ),
-            //about
+            // About
             ListTile(
               leading: const Icon(Icons.info),
               title: const Text("About"),
               onTap: () {
-                Navigator.pop(context); // navigate to about page
+                Navigator.pop(context);
               },
             ),
-            //logout
+            // Logout
             ListTile(
               leading: const Icon(Icons.logout),
               title: const Text("Logout"),
               onTap: () {
-                Navigator.pop(context); // log out
+                // Clear login fields
+                widget.usernameController.clear();
+                widget.passwordController.clear();
+
+                // Navigate back to login screen
+                Navigator.pushReplacementNamed(context, '/login');
               },
             ),
           ],
@@ -87,7 +99,7 @@ class _UserDashboardState extends State<UserDashboard> {
         selectedItemColor: Colors.orangeAccent,
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
@@ -100,7 +112,7 @@ class _UserDashboardState extends State<UserDashboard> {
             icon: Icon(Icons.favorite),
             label: 'Favorites',
           ),
-             BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Profile',
           ),

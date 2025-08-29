@@ -31,7 +31,7 @@ class _LandingPageState extends State<LandingPage> {
               buildPage(
                 "Welcome",
                 "Fast food at your fingertips – tasty meals delivered fresh, hot, and fast, right to your door.",
-                "assets/images/sausage",
+                "assets/images/chips",
               ),
               buildPage(
                 "Order",

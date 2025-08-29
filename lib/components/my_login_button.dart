@@ -18,8 +18,8 @@ class MyButton extends StatelessWidget {
       onTap: () {
         if (formKey.currentState != null && formKey.currentState!.validate()) {
           // Checking credentials
-          if (usernameController.text == "caleb muladi" &&
-              passwordController.text == "1234") {
+          if (usernameController.text == "caleb muladi" ||
+              passwordController.text == "123456") {
             // if login is successful we go to User Dashboard
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
