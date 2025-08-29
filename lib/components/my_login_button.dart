@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {
-  final VoidCallback? onTap;
   final GlobalKey<FormState> formKey;
+  final TextEditingController usernameController;
+  final TextEditingController passwordController;
 
   const MyButton({
     super.key,
-    required this.onTap,
     required this.formKey,
+    required this.usernameController,
+    required this.passwordController, required void Function() onTap,
   });
 
   @override
@@ -15,10 +17,26 @@ class MyButton extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         if (formKey.currentState != null && formKey.currentState!.validate()) {
-          // Run validation success action
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Sign In')),
-          );
+          // Checking credentials
+          if (usernameController.text == "caleb muladi" &&
+              passwordController.text == "1234") {
+            // if login is successful we go to User Dashboard
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text("Sign In successfully"),
+                backgroundColor: Colors.green,
+              ),
+            );
+            Navigator.pushReplacementNamed(context, '/user_dashboard');
+          } else {
+            // it show Invalid credentials
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text("Invalid credentials"),
+                backgroundColor: Colors.red,
+              ),
+            );
+          }
         }
       },
       child: Container(

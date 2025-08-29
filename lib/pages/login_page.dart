@@ -1,5 +1,5 @@
 import 'package:fastfood/components/my_login_button.dart';
-import 'package:fastfood/pages/my_textfield.dart';
+import 'package:fastfood/pages/mylogin_textfield.dart';
 import 'package:fastfood/pages/sign_up.dart';
 import 'package:flutter/material.dart';
 
@@ -19,9 +19,10 @@ class _LoginPageState extends State<LoginPage> {
 
   void signUserIn() {
     if (formKey.currentState != null && formKey.currentState!.validate()) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text('Sign In Successful')));
+      // If validation passed
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Sign In Successful'),backgroundColor: Colors.green,),
+      );
     }
     // Add actual sign-in logic here (API call, DB check, etc.)
   }
@@ -59,17 +60,17 @@ class _LoginPageState extends State<LoginPage> {
                     'Welcome back',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 25,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold
                       
                     ),
                   ),
                   const SizedBox(height: 8),
                   const Text(
-                    'Login to your Fasfood account and get your favorite meals.',
+                    'Login to your Fastfood account and get your favorite meals.',
                     style: TextStyle(color: Colors.white70, fontSize: 13),
                   ),
-                  const SizedBox(height: 25),
+                  const SizedBox(height: 15),
       
                   // Username
                   MyTextField(
@@ -90,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                       color: Colors.orangeAccent,
                     ),
                   ),
-                  const SizedBox(height: 25),
+                  const SizedBox(height: 15),
       
                   // Password
                   MyTextField(
@@ -100,9 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'password is required';
-                      } else if (value.length < 8) {
-                        return 'password must be at least 8 characters';
-                      }
+                      } 
                       return null;
                     },
                     icon: const Icon(
@@ -112,10 +111,10 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
       
-                  const SizedBox(height: 35),
-      
-                  MyButton(onTap: signUserIn, formKey: formKey),
-      
+                  const SizedBox(height: 25),
+
+                  MyButton(onTap: signUserIn, formKey: formKey, usernameController: usernameController, passwordController: passwordController),
+
                   const SizedBox(height: 173),
       
                   // Sign Up link

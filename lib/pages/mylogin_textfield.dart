@@ -25,16 +25,18 @@ class MyTextField extends StatelessWidget {
         obscureText: obscureText,
         validator: validator,
         decoration: InputDecoration(
+          prefixIcon: icon,
           hintText: hintText,
-          prefix: icon,
-          enabledBorder: const UnderlineInputBorder(
+          border: OutlineInputBorder(
+            
             borderSide: BorderSide(color: Colors.white, width: 1),
+            
           ),
-          focusedBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.orangeAccent, width: 1),
-          ),
+            contentPadding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15), // controls height
+           filled: true,
+           fillColor: Colors.white.withValues(alpha: 0.1),
         ),
-        style: const TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white70),
       ),
     );
   }

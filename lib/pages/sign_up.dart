@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fastfood/components/my_signup_button.dart';
-import 'package:fastfood/pages/my_textfield.dart';
+import 'package:fastfood/mysignup_textfield.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:intl_phone_field/phone_number.dart';
 
 class SignUp extends StatefulWidget {
   final VoidCallback? onTap;
@@ -17,15 +19,21 @@ class _SignUpPageState extends State<SignUp> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneNumberController = TextEditingController();
+  bool obscurePassword = true;
 
   final RegExp _emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-  final RegExp _phoneRegExp = RegExp(r'^[0-9]{10}$');
+
+  String phoneNumber = "";
 
   void signUserIn() {
     if (formKey.currentState != null && formKey.currentState!.validate()) {
-      // If validation passed
+      print("Full phone: $phoneNumber");
+
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('SignUp Successfully!')),
+        const SnackBar(
+          content: Text('SignUp Successfully!'),
+          backgroundColor: Colors.green,
+        ),
       );
     }
   }
@@ -35,7 +43,7 @@ class _SignUpPageState extends State<SignUp> {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset:true,
       body: SingleChildScrollView(
         child: Stack(
           children: [
@@ -58,7 +66,7 @@ class _SignUpPageState extends State<SignUp> {
 
             // Form
             Positioned(
-              top: screenHeight * 0.15,
+              top: screenHeight * 0.1,
               left: 20,
               right: 20,
               child: Form(
@@ -67,21 +75,21 @@ class _SignUpPageState extends State<SignUp> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     // Title
-                    Text(
-                      'Delicious',
+                    const Text(
+                      'Create Account',
                       style: TextStyle(
-                        color: Colors.orangeAccent,
-                        fontSize: 40,
+                        color: Colors.white,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'Meal for every day',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    const SizedBox(height: 7),
+                    const Text(
+                      'Join Fastfood and get your favorite meals.',
+                      style: TextStyle(color: Colors.white70, fontSize: 15),
                     ),
 
-                    const SizedBox(height: 25),
+                    const SizedBox(height: 15),
 
                     // Username
                     MyTextField(
@@ -96,10 +104,14 @@ class _SignUpPageState extends State<SignUp> {
                         }
                         return null;
                       },
-                      icon: Icon(Icons.person, size: 22, color: Colors.orangeAccent),
+                      icon: const Icon(
+                        Icons.person,
+                        size: 22,
+                        color: Colors.orangeAccent,
+                      ),
                     ),
 
-                    const SizedBox(height: 25),
+                    const SizedBox(height: 15),
 
                     // Password
                     MyTextField(
@@ -111,13 +123,35 @@ class _SignUpPageState extends State<SignUp> {
                           return 'Password is required';
                         } else if (value.length < 8) {
                           return 'Password must be at least 8 characters';
+                        } else if (!RegExp(r'^(?=.*[A-Z])').hasMatch(value)) {
+                          return 'Password must contain at least one uppercase letter';
+                        } else if (value.contains(' ')) {
+                          return 'Password should not contain spaces';
+                        }
+                        const weakPasswords = [
+                          '123456',
+                          '12345678',
+                          'password',
+                          'qwerty',
+                          '111111',
+                          'abcdef',
+                          '123123',
+                          '123456789',
+                        ];
+                        if (weakPasswords.contains(value)) {
+                          return 'Enter a stronger password.';
                         }
                         return null;
                       },
-                      icon: Icon(Icons.lock, size: 22, color: Colors.orangeAccent),
+                      icon: const Icon(
+                        Icons.lock,
+                        size: 22,
+                        color: Colors.orangeAccent,
+                      ),
+                      
                     ),
 
-                    const SizedBox(height: 25),
+                    const SizedBox(height: 15),
 
                     // Email
                     MyTextField(
@@ -132,36 +166,53 @@ class _SignUpPageState extends State<SignUp> {
                         }
                         return null;
                       },
-                      icon: Icon(Icons.email, size: 22, color: Colors.orangeAccent),
+                      icon: const Icon(
+                        Icons.email,
+                        size: 22,
+                        color: Colors.orangeAccent,
+                      ),
                     ),
 
-                    const SizedBox(height: 25),
+                    const SizedBox(height: 15),
 
-                    // Phone Number
-                    MyTextField(
+                    // Phone Number 
+                    IntlPhoneField(
                       controller: _phoneNumberController,
-                      hintText: 'Phone Number',
-                      obscureText: false,
+                        dropdownTextStyle: const TextStyle(
+                          color: Colors.white70),
+                            dropdownIcon: const Icon(
+                              Icons.arrow_drop_down,
+                              color: Colors.white,
+                                ),
+                      initialCountryCode: 'TZ', style: const TextStyle(color: Colors.white70),// Default: Tanzania
+                      decoration: InputDecoration(
+                          filled: true,
+                      fillColor: Colors.white.withValues(alpha: 0.1),
+                        labelText: 'Phone Number',
+                        border: OutlineInputBorder(),
+                        contentPadding: EdgeInsets.symmetric(vertical: 18, horizontal: 10),
+                      ),
+                      onChanged: (PhoneNumber phone) {
+                        setState(() {
+                          phoneNumber = phone.completeNumber; // full phone
+                        });
+                      },
                       validator: (value) {
-                        if (value == null || value.isEmpty) {
+                        if (value == null || value.number.isEmpty) {
                           return 'Phone number is required';
-                        } else if (!_phoneRegExp.hasMatch(value)) {
-                          return 'Enter a valid 10-digit Phone number';
+                        } else if (value.number.length < 9) {
+                          return 'Enter a valid phone number';
                         }
                         return null;
                       },
-                      icon: Icon(Icons.phone, size: 22, color: Colors.orangeAccent),
                     ),
 
-                    const SizedBox(height: 35),
+                    const SizedBox(height: 15),
 
                     // Signup Button
-                    MySignUpButton(
-                      onTap: signUserIn, 
-                      formKey: formKey,
-                    ),
+                    MySignUpButton(onTap: signUserIn, formKey: formKey),
 
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 20),
 
                     // Login Link
                     Row(

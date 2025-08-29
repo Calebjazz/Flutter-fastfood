@@ -17,7 +17,7 @@ class MySignUpButton extends StatelessWidget {
         if (formKey.currentState != null && formKey.currentState!.validate()) {
           // Run validation success action
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('SignUp succesfully!')),
+            const SnackBar(content: Text('SignUp successfully!'),backgroundColor: Colors.green,),
           );
         }
       },
