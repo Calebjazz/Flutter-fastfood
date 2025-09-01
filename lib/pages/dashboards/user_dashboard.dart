@@ -1,3 +1,7 @@
+import 'package:fastfood/pages/dashboards/navigation%20bar%20pages/cart.dart';
+import 'package:fastfood/pages/dashboards/navigation%20bar%20pages/favorites.dart';
+import 'package:fastfood/pages/dashboards/navigation%20bar%20pages/home.dart';
+import 'package:fastfood/pages/dashboards/navigation%20bar%20pages/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,11 +22,11 @@ class UserDashboard extends StatefulWidget {
 class _UserDashboardState extends State<UserDashboard> {
   int _selectedIndex = 0;
 
-  final List<Widget> pages = [
-    Center(child: Text("Home", style: TextStyle(fontSize: 20))),
-    Center(child: Text("Cart", style: TextStyle(fontSize: 20))),
-    Center(child: Text("Favorites", style: TextStyle(fontSize: 20))),
-    Center(child: Text("Profile", style: TextStyle(fontSize: 20))),
+  final List<Widget> pages = const [
+    Home(),
+    Cart(),
+    Favorites(),
+    Profile(),
   ];
 
   void onItemTapped(int index) {

@@ -38,10 +38,25 @@ dependencies:
   flutter_launcher_icons: ^0.14.4
   country_picker: ^2.0.27
   intl_phone_field: ^3.2.0
+  flutter_native_splash: ^2.4.6
+  google_maps_flutter: ^2.12.3
+  geolocator: ^14.0.2
+  google_places_flutter: ^2.1.1
+  carousel_slider: ^5.1.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+
+
+
+
+flutter_native_splash:
+  color: "#FFA726"        # Orange Accent (hex value)
+  image: assets/images/baga.png  # Path to your logo
+  android: true
+  ios: true
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -67,6 +82,7 @@ flutter:
     - assets/images/chips
     - assets/images/kfc
     - assets/images/burger-king
+    - assets/images/baga.png
   #   - images/a_dot_ham.jpeg
 
 
@@ -74,7 +90,7 @@ flutter:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/icons/baga"
+  image_path: "assets/icons/baga(2).jpeg"
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
