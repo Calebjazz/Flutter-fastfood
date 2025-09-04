@@ -87,6 +87,9 @@ flutter:
     - assets/images/cocacola.jpeg
     - assets/images/desert.jpeg
     - assets/images/Pizza.jpeg
+    - assets/images/HotDogs.jpeg
+    - assets/images/GoldenCrispyChicken.jpeg
+    - assets/images/veggiburger.jpeg
 
 
 

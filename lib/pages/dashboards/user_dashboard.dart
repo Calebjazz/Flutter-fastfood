@@ -88,7 +88,7 @@ class _UserDashboardState extends State<UserDashboard> {
                 // Clear login fields
                 widget.usernameController.clear();
                 widget.passwordController.clear();
-
+    
                 // Navigate back to login screen
                 Navigator.pushReplacementNamed(context, '/login');
               },
