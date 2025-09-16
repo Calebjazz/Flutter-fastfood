@@ -43,6 +43,11 @@ dependencies:
   geolocator: ^14.0.2
   google_places_flutter: ^2.1.1
   carousel_slider: ^5.1.1
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.20.2
+  provider: ^6.1.5+1
+  shared_preferences: ^2.5.3
 
 dev_dependencies:
   flutter_test:

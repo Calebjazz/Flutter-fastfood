@@ -33,9 +33,7 @@ class _HomeState extends State<Home> {
                 prefixIcon: const Icon(Icons.search),
                 suffixIcon: IconButton(
                   icon: const Icon(Icons.filter_list),
-                  onPressed: () {
-                    // filter action
-                  },
+                  onPressed: () {},
                 ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -45,102 +43,110 @@ class _HomeState extends State<Home> {
                 contentPadding: const EdgeInsets.symmetric(horizontal: 20),
               ),
             ),
-      
-            const SizedBox(height: 20),
-      
-            // Carousel with 4 sliders
-            CarouselSlider(
-              options: CarouselOptions(
-                height: 160,
-                enlargeCenterPage: true,
-                autoPlay: true,
-                autoPlayInterval: const Duration(seconds: 3),
-                viewportFraction: 0.85,
-              ),
-              items: [
-                buildSlider("assets/images/burger-king", "Delicious Burgers"),
-                buildSlider("assets/images/Pizza.jpeg", "Fresh Pizza"),
-                buildSlider("assets/images/cocacola.jpeg", "Tasty Drinks"),
-                buildSlider("assets/images/desert.jpeg", "Sweet Desserts"),
-              ],
-            ),
-      
-            const SizedBox(height: 20),
-      
-            // Aligning the text to the left
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Search Food by Categories',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 17,
-                  fontFamily: GoogleFonts.poppins().fontFamily,
-                ),
-              ),
-            ),
-      
-            const SizedBox(height: 8),
-      
-            // Different categories button
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  _buildCategoryButton("American🇺🇸", 0),
-                  const SizedBox(width: 8),
-                  _buildCategoryButton("French🇫🇷", 1),
-                  const SizedBox(width: 8),
-                  _buildCategoryButton("Asian🇨🇳", 2),
-                  const SizedBox(width: 8),
-                  _buildCategoryButton("Italian🇮🇹", 3),
-                  const SizedBox(width: 8),
-                  _buildCategoryButton("Mexican🇲🇽", 4),
-                  const SizedBox(width: 8),
-                  _buildCategoryButton("Local🇹🇿", 5),
-                  const SizedBox(width: 8),
-                ],
-              ),
-            ),
-      
-            const SizedBox(height: 15),
-      
-            // Title + See all
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Popular Foods",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    fontFamily: GoogleFonts.poppins().fontFamily,
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    // TODO: Navigate to all products page
-                  },
-                  child: Text("See All →", style: TextStyle(color: Colors.black,  fontFamily: GoogleFonts.poppins().fontFamily, fontWeight: FontWeight.bold ),),
-                ),
-              ],
-            ),
-      
-            // Product grid
+
+            const SizedBox(height: 10),
+
+            // Everything below is scrollable
             Expanded(
-              child: GridView.count(
-                //shrinkWrap: true,   //  makes it work inside scroll
-               // physics: const NeverScrollableScrollPhysics(), //  prevent double scroll
-                crossAxisCount: 2,
-                mainAxisSpacing: 12,
-                crossAxisSpacing: 12,
-                childAspectRatio: 0.72,
-                children: [
-                  buildProductCard("Hot Dogs", "assets/images/HotDogs.jpeg", 8.99, 0),
-                  buildProductCard("Veggi Burger", "assets/images/veggiburger.jpeg", 8.49, 1),
-                  buildProductCard("Crispy chicken", "assets/images/GoldenCrispyChicken.jpeg", 10.99, 2),
-                  buildProductCard("Fries", "assets/images/kfc", 7.50, 3),
-                ],
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Carousel with 4 sliders
+                    CarouselSlider(
+                      options: CarouselOptions(
+                        height: 160,
+                        enlargeCenterPage: true,
+                        autoPlay: true,
+                        autoPlayInterval: const Duration(seconds: 3),
+                        viewportFraction: 0.85,
+                      ),
+                      items: [
+                        buildSlider("assets/images/burger-king", "Delicious Burgers"),
+                        buildSlider("assets/images/Pizza.jpeg", "Fresh Pizza"),
+                        buildSlider("assets/images/cocacola.jpeg", "Tasty Drinks"),
+                        buildSlider("assets/images/desert.jpeg", "Sweet Desserts"),
+                      ],
+                    ),
+
+                    const SizedBox(height: 20),
+
+                    // Categories title
+                    Text(
+                      'Search Food by Categories',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17,
+                        fontFamily: GoogleFonts.poppins().fontFamily,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+
+                    // Different categories button
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          _buildCategoryButton("American🇺🇸", 0),
+                          const SizedBox(width: 8),
+                          _buildCategoryButton("French🇫🇷", 1),
+                          const SizedBox(width: 8),
+                          _buildCategoryButton("Asian🇨🇳", 2),
+                          const SizedBox(width: 8),
+                          _buildCategoryButton("Italian🇮🇹", 3),
+                          const SizedBox(width: 8),
+                          _buildCategoryButton("Mexican🇲🇽", 4),
+                          const SizedBox(width: 8),
+                          _buildCategoryButton("Local🇹🇿", 5),
+                        ],
+                      ),
+                    ),
+
+                    const SizedBox(height: 15),
+
+                    // Title + See all
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Popular Foods",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            fontFamily: GoogleFonts.poppins().fontFamily,
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            "See All →",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: GoogleFonts.poppins().fontFamily,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    // Product grid
+                    GridView.count(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 12,
+                      crossAxisSpacing: 12,
+                      childAspectRatio: 0.72,
+                      children: [
+                        buildProductCard("Hot Dogs", "assets/images/HotDogs.jpeg", 8.99, 0),
+                        buildProductCard("Veggi Burger", "assets/images/veggiburger.jpeg", 8.49, 1),
+                        buildProductCard("Crispy chicken", "assets/images/GoldenCrispyChicken.jpeg", 10.99, 2),
+                        buildProductCard("Fries", "assets/images/kfc", 7.50, 3),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
@@ -175,7 +181,6 @@ class _HomeState extends State<Home> {
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
-                shadows: [],
               ),
             ),
           ),
@@ -197,16 +202,19 @@ class _HomeState extends State<Home> {
       style: ElevatedButton.styleFrom(
         backgroundColor: isSelected ? Colors.orangeAccent : Colors.white54,
         foregroundColor: isSelected ? Colors.white : Colors.black,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       ),
       child: Text(text),
     );
   }
 
   // Product card with like + add to cart
-  Widget buildProductCard(String name, String imagePath, double price, int index) {
+  Widget buildProductCard(
+    String name,
+    String imagePath,
+    double price,
+    int index,
+  ) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 3,
@@ -256,10 +264,7 @@ class _HomeState extends State<Home> {
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Text(
               name,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
           ),
 
@@ -279,21 +284,19 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () {
-                    // TODO: Add to cart
-                  },
+                  onPressed: () {},
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orangeAccent,
                     minimumSize: const Size(40, 30),
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 4,
+                    ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  child: const Text(
-                    "Add",
-                    style: TextStyle(fontSize: 12),
-                  ),
+                  child: const Text("Add", style: TextStyle(fontSize: 12)),
                 ),
               ],
             ),
@@ -303,3 +306,4 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
