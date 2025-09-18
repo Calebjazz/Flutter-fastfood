@@ -30,11 +30,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.light,
-        primarySwatch: Colors.orange,
+        primarySwatch: Colors.green,
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
-        primarySwatch: Colors.deepOrange,
+        primarySwatch: Colors.green,
       ),
       themeMode: themeProvider.themeMode, // Use Provider value
       initialRoute: '/',

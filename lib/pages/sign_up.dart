@@ -107,7 +107,7 @@ class _SignUpPageState extends State<SignUp> {
                       icon: const Icon(
                         Icons.person,
                         size: 22,
-                        color: Colors.orangeAccent,
+                        color: Colors.green,
                       ),
                     ),
 
@@ -146,7 +146,7 @@ class _SignUpPageState extends State<SignUp> {
                       icon: const Icon(
                         Icons.lock,
                         size: 22,
-                        color: Colors.orangeAccent,
+                        color: Colors.green,
                       ),
                       
                     ),
@@ -169,7 +169,7 @@ class _SignUpPageState extends State<SignUp> {
                       icon: const Icon(
                         Icons.email,
                         size: 22,
-                        color: Colors.orangeAccent,
+                        color: Colors.green,
                       ),
                     ),
 
@@ -230,7 +230,7 @@ class _SignUpPageState extends State<SignUp> {
                           child: const Text(
                             'Login',
                             style: TextStyle(
-                              color: Colors.orangeAccent,
+                              color: Colors.green,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

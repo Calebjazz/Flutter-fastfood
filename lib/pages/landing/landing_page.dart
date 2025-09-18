@@ -73,7 +73,7 @@ class _LandingPageState extends State<LandingPage> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  backgroundColor: Colors.orange,
+                  backgroundColor: Colors.green,
                 ),
                 child: const Text(
                   "Get Started",

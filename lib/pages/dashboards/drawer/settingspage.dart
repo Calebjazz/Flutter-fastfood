@@ -13,7 +13,7 @@ class SettingsPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.orangeAccent,
+        backgroundColor: isDarkMode ? Colors.black : Colors.green,
         title: const Text("Settings"),
       ),
       body: ListView(
@@ -23,29 +23,33 @@ class SettingsPage extends StatelessWidget {
             leading: Icon(isDarkMode ? Icons.dark_mode : Icons.light_mode),
             title: Text(isDarkMode ? "Dark Mode" : "Light Mode"),
             onTap: () {
-              themeProvider.toggleTheme(); // handled in provider (saves to prefs too)
+              themeProvider
+                  .toggleTheme(); // handled in provider (saves to prefs too)
             },
           ),
 
           // Language selection
-          const ListTile(
+          ListTile(
             leading: Icon(Icons.language),
             title: Text("Language"),
             trailing: Icon(Icons.arrow_forward_ios),
+            onTap: () {},
           ),
 
           // Notifications settings
-          const ListTile(
+          ListTile(
             leading: Icon(Icons.notifications),
             title: Text("Notifications"),
             trailing: Icon(Icons.arrow_forward_ios),
+            onTap: () {},
           ),
 
           // Payments settings
-          const ListTile(
+          ListTile(
             leading: Icon(Icons.payment),
             title: Text("Payments"),
             trailing: Icon(Icons.arrow_forward_ios),
+            onTap: () {},
           ),
         ],
       ),

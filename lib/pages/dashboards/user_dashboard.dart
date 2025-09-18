@@ -2,12 +2,15 @@ import 'package:fastfood/pages/dashboards/drawer/theme/themeprovider.dart';
 import 'package:fastfood/pages/dashboards/navigation%20bar%20pages/cart.dart';
 import 'package:fastfood/pages/dashboards/navigation%20bar%20pages/favorites.dart';
 import 'package:fastfood/pages/dashboards/navigation%20bar%20pages/home.dart';
-import 'package:fastfood/pages/dashboards/navigation%20bar%20pages/profile.dart';
+import 'package:fastfood/pages/dashboards/navigation%20bar%20pages/location.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'drawer/settingspage.dart';
-//import 'drawer/themeprovider.dart';
+import 'drawer/profile.dart';
+import 'drawer/about.dart';
+import 'drawer/privacy.dart';
+import 'drawer/faqs.dart';
 
 class UserDashboard extends StatefulWidget {
   final TextEditingController usernameController;
@@ -30,7 +33,7 @@ class _UserDashboardState extends State<UserDashboard> {
     Home(),
     Cart(),
     Favorites(),
-    Profile(),
+    Location(),
   ];
 
   void onItemTapped(int index) {
@@ -53,7 +56,7 @@ class _UserDashboardState extends State<UserDashboard> {
           'Fastfood',
           style: TextStyle(fontFamily: GoogleFonts.poppins().fontFamily),
         ),
-        backgroundColor: Colors.orangeAccent,
+        backgroundColor: isDarkMode ? Colors.black : Colors.green,
         iconTheme: IconThemeData(color: iconColor),
       ),
       drawer: Drawer(
@@ -65,9 +68,9 @@ class _UserDashboardState extends State<UserDashboard> {
               accountEmail: Text("calebmuladi9@gmail.com", style: TextStyle(color: textColor)),
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Colors.white,
-                child: Icon(Icons.person, size: 30, color: Colors.orange),
+                child: Icon(Icons.person, size: 30, color: Colors.green),
               ),
-              decoration: const BoxDecoration(color: Colors.orangeAccent),
+              decoration: BoxDecoration(color: isDarkMode ? Colors.black : Colors.green),
             ),
             // Settings
             ListTile(
@@ -88,7 +91,10 @@ class _UserDashboardState extends State<UserDashboard> {
               leading: Icon(Icons.question_answer, color: iconColor),
               title: Text("FAQS", style: TextStyle(color: textColor)),
               onTap: () {
-                Navigator.pop(context);
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const FaqsPage()),
+                );
               },
             ),
             // About
@@ -96,7 +102,10 @@ class _UserDashboardState extends State<UserDashboard> {
               leading: Icon(Icons.info, color: iconColor),
               title: Text("About", style: TextStyle(color: textColor)),
               onTap: () {
-                Navigator.pop(context);
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const AboutPage()),
+                );
               },
             ),
             // Privacy
@@ -104,7 +113,21 @@ class _UserDashboardState extends State<UserDashboard> {
               leading: Icon(Icons.privacy_tip, color: iconColor),
               title: Text("Privacy", style: TextStyle(color: textColor)),
               onTap: () {
-                Navigator.pop(context);
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const PrivacyPage()),
+                );
+              },
+            ),
+            // Profile
+            ListTile(
+              leading: Icon(Icons.person, color: iconColor),
+              title: Text("Profile", style: TextStyle(color: textColor)),
+              onTap: () {
+                 Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProfilePage()),
+                );
               },
             ),
             // Logout
@@ -130,7 +153,7 @@ class _UserDashboardState extends State<UserDashboard> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: onItemTapped,
-        selectedItemColor: Colors.orangeAccent,
+        selectedItemColor: Colors.green,
         unselectedItemColor: isDarkMode ? Colors.white : Colors.black54,
         showUnselectedLabels: true,
         items: [
@@ -147,8 +170,8 @@ class _UserDashboardState extends State<UserDashboard> {
             label: 'Favorites',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person, color: isDarkMode ? Colors.white : Colors.black),
-            label: 'Profile',
+            icon: Icon(Icons.location_on, color: isDarkMode ? Colors.white : Colors.black),
+            label: 'Location',
           ),
         ],
       ),

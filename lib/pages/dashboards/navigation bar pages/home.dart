@@ -121,7 +121,7 @@ class _HomeState extends State<Home> {
                           child: Text(
                             "See All →",
                             style: TextStyle(
-                              color: Colors.black,
+                              color: Colors.white70,
                               fontFamily: GoogleFonts.poppins().fontFamily,
                               fontWeight: FontWeight.bold,
                             ),
@@ -200,7 +200,7 @@ class _HomeState extends State<Home> {
         });
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: isSelected ? Colors.orangeAccent : Colors.white54,
+        backgroundColor: isSelected ? Colors.green : Colors.white54,
         foregroundColor: isSelected ? Colors.white : Colors.black,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       ),
@@ -280,13 +280,13 @@ class _HomeState extends State<Home> {
                   "\$${price.toStringAsFixed(2)}",
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: Colors.orange,
+                    color: Colors.green,
                   ),
                 ),
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orangeAccent,
+                    backgroundColor: Colors.green,
                     minimumSize: const Size(40, 30),
                     padding: const EdgeInsets.symmetric(
                       horizontal: 10,
@@ -296,7 +296,7 @@ class _HomeState extends State<Home> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  child: const Text("Add", style: TextStyle(fontSize: 12)),
+                  child: const Text("Add to cart", style: TextStyle(fontSize: 12, color: Colors.white)),
                 ),
               ],
             ),
