@@ -37,15 +37,16 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
       ),
       themeMode: themeProvider.themeMode, // Use Provider value
+    
       initialRoute: '/',
       routes: {
         '/': (context) => const LandingPage(),
         '/login': (context) => const LoginPage(),
         '/sign_up': (context) => const SignUp(),
         '/user_dashboard': (context) => UserDashboard(
-              usernameController: TextEditingController(),
-              passwordController: TextEditingController(),
-            ),
+          usernameController: TextEditingController(),
+          passwordController: TextEditingController(),
+        ),
         '/settings': (context) => const SettingsPage(), // Settings page route
       },
     );

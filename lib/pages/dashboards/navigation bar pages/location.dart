@@ -44,7 +44,7 @@ class _LocationState extends State<Location> {
       desiredAccuracy: LocationAccuracy.high,
     );
 
-    setState(() {
+  setState(() {
       _center = LatLng(position.latitude, position.longitude);
       mapController.animateCamera(
         CameraUpdate.newCameraPosition(

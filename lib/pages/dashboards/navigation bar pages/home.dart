@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:google_fonts/google_fonts.dart';
+//import '../data/food_list.dart';       // your FoodItem list
+//import '../widgets/product_cards.dart'; // your ProductCards widget
+
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -62,10 +65,19 @@ class _HomeState extends State<Home> {
                         viewportFraction: 0.85,
                       ),
                       items: [
-                        buildSlider("assets/images/burger-king", "Delicious Burgers"),
+                        buildSlider(
+                          "assets/images/burger-king",
+                          "Delicious Burgers",
+                        ),
                         buildSlider("assets/images/Pizza.jpeg", "Fresh Pizza"),
-                        buildSlider("assets/images/cocacola.jpeg", "Tasty Drinks"),
-                        buildSlider("assets/images/desert.jpeg", "Sweet Desserts"),
+                        buildSlider(
+                          "assets/images/cocacola.jpeg",
+                          "Tasty Drinks",
+                        ),
+                        buildSlider(
+                          "assets/images/desert.jpeg",
+                          "Sweet Desserts",
+                        ),
                       ],
                     ),
 
@@ -139,9 +151,24 @@ class _HomeState extends State<Home> {
                       crossAxisSpacing: 12,
                       childAspectRatio: 0.72,
                       children: [
-                        buildProductCard("Hot Dogs", "assets/images/HotDogs.jpeg", 8.99, 0),
-                        buildProductCard("Veggi Burger", "assets/images/veggiburger.jpeg", 8.49, 1),
-                        buildProductCard("Crispy chicken", "assets/images/GoldenCrispyChicken.jpeg", 10.99, 2),
+                        buildProductCard(
+                          "Hot Dogs",
+                          "assets/images/HotDogs.jpeg",
+                          8.99,
+                          0,
+                        ),
+                        buildProductCard(
+                          "Veggi Burger",
+                          "assets/images/veggiburger.jpeg",
+                          8.49,
+                          1,
+                        ),
+                        buildProductCard(
+                          "Crispy chicken",
+                          "assets/images/GoldenCrispyChicken.jpeg",
+                          10.99,
+                          2,
+                        ),
                         buildProductCard("Fries", "assets/images/kfc", 7.50, 3),
                       ],
                     ),
@@ -296,7 +323,10 @@ class _HomeState extends State<Home> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  child: const Text("Add to cart", style: TextStyle(fontSize: 12, color: Colors.white)),
+                  child: const Text(
+                    "Add to cart",
+                    style: TextStyle(fontSize: 12, color: Colors.white),
+                  ),
                 ),
               ],
             ),
@@ -306,4 +336,3 @@ class _HomeState extends State<Home> {
     );
   }
 }
-
